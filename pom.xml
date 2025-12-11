@@ -104,6 +104,34 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- JaCoCo for code coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
+                <executions>
+
+                    <!-- Attach JaCoCo Java Agent -->
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>${jacoco.destfile}</destFile>
+                        </configuration>
+                    </execution>
+
+                    <!-- Generate HTML report -->
+                    <execution>
+                        <id>jacoco-report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+
+                </executions>
+            </plugin>
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
